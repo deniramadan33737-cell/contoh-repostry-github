@@ -1,0 +1,183 @@
+:root {
+  --kertas: #f3f5fb;
+  --putih: #ffffff;
+  --tinta: #182044;
+  --tinta-pudar: #5d6590;
+  --garis: #dde1f0;
+  --biru: #2f5bea;
+  --biru-muda: #e4eaff;
+  --kuning: #f5b800;
+  --merah: #d64545;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--kertas);
+  color: var(--tinta);
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 16px;
+}
+
+/* Panel jam */
+.panel-jam {
+  background: var(--tinta);
+  color: #fff;
+  border-radius: 20px;
+  padding: 28px 24px;
+  align-self: start;
+}
+.hari { margin: 0; font-size: 1.1rem; color: var(--kuning); font-weight: 600; }
+.jam {
+  margin: 4px 0;
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.tanggal { margin: 0 0 24px; color: #c3c9ea; }
+
+.mendatang h2 { font-size: 1rem; margin: 0 0 10px; }
+.mendatang ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.mendatang li {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+.mendatang li b { display: block; font-weight: 600; }
+.mendatang li span { color: #c3c9ea; font-size: 0.8rem; }
+.mendatang .kosong { background: none; padding: 0; color: #c3c9ea; }
+
+/* Kalender */
+.kalender {
+  background: var(--putih);
+  border-radius: 20px;
+  padding: 24px;
+}
+.kal-kepala {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.kal-kepala h1 { margin: 0; font-size: 1.6rem; }
+.kal-tombol { display: flex; gap: 6px; }
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--garis);
+  background: var(--putih);
+  color: var(--tinta);
+  border-radius: 10px;
+  padding: 8px 14px;
+}
+button:hover { background: var(--biru-muda); }
+button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--biru);
+  outline-offset: 2px;
+}
+
+.nama-hari, .grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+.nama-hari span {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--tinta-pudar);
+  padding-bottom: 6px;
+}
+
+.sel {
+  min-height: 64px;
+  border: 1px solid var(--garis);
+  border-radius: 12px;
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  text-align: left;
+}
+.sel.kosong { border: none; background: none; cursor: default; }
+.sel.kosong:hover { background: none; }
+.sel.minggu .angka { color: var(--merah); }
+.sel.hari-ini { border: 2px solid var(--kuning); }
+.sel.hari-ini .angka { font-weight: 700; }
+.sel.terpilih { background: var(--biru); border-color: var(--biru); color: #fff; }
+.sel.terpilih .angka { color: #fff; }
+.sel.terpilih .titik { background: #fff; }
+
+.titik-baris { display: flex; gap: 3px; flex-wrap: wrap; }
+.titik { width: 7px; height: 7px; border-radius: 50%; background: var(--biru); }
+
+/* Detail hari */
+.detail { margin-top: 24px; border-top: 1px solid var(--garis); padding-top: 20px; }
+.detail h2 { margin: 0 0 12px; font-size: 1.15rem; }
+#daftarAcara { list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 8px; }
+#daftarAcara li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: var(--kertas);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+#daftarAcara .info b { display: block; }
+#daftarAcara .info span { color: var(--tinta-pudar); font-size: 0.85rem; }
+#daftarAcara .kosong { color: var(--tinta-pudar); background: none; padding: 0; }
+.hapus { color: var(--merah); padding: 6px 10px; font-size: 0.85rem; }
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 140px;
+  gap: 12px;
+  align-items: end;
+}
+label { display: grid; gap: 4px; font-size: 0.9rem; color: var(--tinta-pudar); }
+label.lebar { grid-column: 1 / -1; }
+input {
+  font: inherit;
+  color: var(--tinta);
+  border: 1px solid var(--garis);
+  border-radius: 10px;
+  padding: 9px 12px;
+  width: 100%;
+}
+form button[type="submit"] {
+  grid-column: 1 / -1;
+  background: var(--biru);
+  border-color: var(--biru);
+  color: #fff;
+  font-weight: 600;
+}
+form button[type="submit"]:hover { background: #2349c4; }
+
+/* HP */
+@media (max-width: 800px) {
+  .app { grid-template-columns: 1fr; padding: 10px; }
+  .kalender { padding: 16px; }
+  .sel { min-height: 52px; padding: 4px 6px; }
+  .jam { font-size: 2.6rem; }
+}
+@media (max-width: 480px) {
+  form { grid-template-columns: 1fr; }
+  .kal-kepala h1 { font-size: 1.3rem; }
+}

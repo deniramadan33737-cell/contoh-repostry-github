@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Planner Kalender</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+
+    <aside class="panel-jam">
+      <p id="hari" class="hari"></p>
+      <p id="jam" class="jam"></p>
+      <p id="tanggal" class="tanggal"></p>
+
+      <section class="mendatang">
+        <h2>Acara mendatang</h2>
+        <ul id="mendatang"></ul>
+      </section>
+    </aside>
+
+    <section class="kalender">
+      <header class="kal-kepala">
+        <h1 id="judulBulan"></h1>
+        <div class="kal-tombol">
+          <button id="prev" type="button" aria-label="Bulan sebelumnya">‹</button>
+          <button id="hariIni" type="button">Hari ini</button>
+          <button id="next" type="button" aria-label="Bulan berikutnya">›</button>
+        </div>
+      </header>
+
+      <div class="nama-hari">
+        <span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span><span>Min</span>
+      </div>
+      <div id="grid" class="grid"></div>
+
+      <section class="detail">
+        <h2 id="judulDetail"></h2>
+        <ul id="daftarAcara"></ul>
+
+        <form id="formAcara">
+          <label>Nama acara
+            <input id="inJudul" type="text" maxlength="80" required placeholder="Contoh: Ujian Kalkulus">
+          </label>
+          <label>Jam
+            <input id="inJam" type="time">
+          </label>
+          <label class="lebar">Catatan
+            <input id="inCatatan" type="text" maxlength="120" placeholder="Opsional">
+          </label>
+          <button type="submit">Simpan acara</button>
+        </form>
+      </section>
+    </section>
+
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
